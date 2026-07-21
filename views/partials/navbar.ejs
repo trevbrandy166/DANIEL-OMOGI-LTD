@@ -1,0 +1,73 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/images/logo.png" alt="Daniel Omogi & Associates LTD" />
+      <div class="logo-text">
+        <span class="logo-main">DANIEL OMOGI</span>
+        <span class="logo-sub">& ASSOCIATES</span>
+      </div>
+    </a>
+
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation"
+      onclick="toggleNav()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu" id="navMenu">
+      <li>
+        <a href="/" class="<%= activePage === 'home' ? 'active' : '' %>"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a href="/about" class="<%= activePage === 'about' ? 'active' : '' %>"
+          >About</a
+        >
+      </li>
+      <li class="dropdown">
+        <a href="#" class="<%= activePage === 'services' ? 'active' : '' %>"
+          >Services ▾</a
+        >
+        <ul class="dropdown-menu">
+          <li><a href="/services/audit-assurance">Audit & Assurance</a></li>
+          <li><a href="/services/tax-advisory">Tax Advisory</a></li>
+          <li><a href="/services/hr-outsourcing">HR Outsourcing</a></li>
+          <li><a href="/services/risk-advisory">Risk Advisory</a></li>
+          <li><a href="/services/iso-consultancy">ISO Consultancy</a></li>
+          <li class="dropdown-divider"></li>
+          <li><a href="/services/financial-planning">Financial Planning</a></li>
+          <li>
+            <a href="/services/investment-advisory">Investment Advisory</a>
+          </li>
+          <li>
+            <a href="/services/retirement-planning">Retirement Planning</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/team" class="<%= activePage === 'team' ? 'active' : '' %>"
+          >Team</a
+        >
+      </li>
+      <li>
+        <a
+          href="/clients"
+          class="<%= activePage === 'clients' ? 'active' : '' %>"
+          >Clients</a
+        >
+      </li>
+      <li>
+        <a
+          href="/contact"
+          class="<%= activePage === 'contact' ? 'active' : '' %>"
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
