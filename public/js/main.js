@@ -1,42 +1,65 @@
-// function toggleNav() {
-//   const navMenu = document.getElementById("navMenu");
-//   navMenu.classList.toggle("active");
-
-//   // Handle dropdowns on mobile
-//   const dropdowns = document.querySelectorAll(".dropdown");
-//   dropdowns.forEach((dropdown) => {
-//     dropdown.addEventListener("click", function (e) {
-//       if (window.innerWidth <= 768) {
-//         e.preventDefault();
-//         this.classList.toggle("active");
-//       }
-//     });
-//   });
-// }
-
-// // Close mobile menu when clicking a link
-// document.querySelectorAll(".nav-menu a").forEach((link) => {
-//   link.addEventListener("click", () => {
-//     if (window.innerWidth <= 768) {
-//       document.getElementById("navMenu").classList.remove("active");
-//     }
-//   });
-// });
-
 // ===== MOBILE NAVIGATION =====
 function toggleNav() {
   const navMenu = document.getElementById("navMenu");
-  navMenu.classList.toggle("active");
+  if (navMenu) {
+    navMenu.classList.toggle("active");
+  }
 }
 
 // Close mobile menu when clicking a link
-document.querySelectorAll(".nav-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    if (window.innerWidth <= 768) {
-      document.getElementById("navMenu").classList.remove("active");
+function initMobileNav() {
+  const navMenu = document.getElementById("navMenu");
+  const navToggle = document.querySelector(".nav-toggle");
+
+  if (!navMenu || !navToggle) return;
+
+  // Toggle on click AND touch
+  navToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleNav();
+  });
+
+  navToggle.addEventListener("touchend", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleNav();
+  });
+
+  // Close when clicking a link
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+      navMenu.classList.remove("active");
     }
   });
-});
+
+  // Close on touch outside
+  document.addEventListener("touchend", function (e) {
+    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+      navMenu.classList.remove("active");
+    }
+  });
+}
+
+// ===== INITIALIZE EVERYTHING =====
+function initAll() {
+  setTimeout(() => {
+    initMobileNav();
+    initAOS();
+    initCounters();
+    initTyping();
+    initSlider();
+    initMarquee();
+    initDarkMode();
+  }, 100);
+}
 
 // ===== AOS (Animate On Scroll) =====
 document.addEventListener("DOMContentLoaded", function () {
