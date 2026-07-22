@@ -2008,3 +2008,32 @@ body.dark-mode .error-box p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Mobile dropdown */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding-left: 1rem;
+    display: none;
+    background: var(--bg-light);
+    margin-top: 0.5rem;
+    border-radius: var(--radius);
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown > a::after {
+    content: " ▾";
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.active > a::after {
+    content: " ▴";
+  }
+}
