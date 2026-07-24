@@ -202,14 +202,14 @@ function initSlider() {
   });
 }
 
-// ===== IMAGE MARQUEE =====
-function initMarquee() {
-  const marqueeTrack = document.querySelector(".marquee-track");
-  if (marqueeTrack) {
-    const items = marqueeTrack.innerHTML;
-    marqueeTrack.innerHTML = items + items;
-  }
-}
+// // ===== IMAGE MARQUEE =====
+// function initMarquee() {
+//   const marqueeTrack = document.querySelector(".marquee-track");
+//   if (marqueeTrack) {
+//     const items = marqueeTrack.innerHTML;
+//     marqueeTrack.innerHTML = items + items;
+//   }
+// }
 
 // ===== DARK MODE =====
 function initDarkMode() {
@@ -233,6 +233,117 @@ function initDarkMode() {
   });
 }
 
+// ===== SERVICES IMAGE SLIDER =====
+function initServicesSlider() {
+  const track = document.getElementById("sliderTrack");
+  const prevBtn = document.getElementById("sliderPrev");
+  const nextBtn = document.getElementById("sliderNext");
+  const dots = document.querySelectorAll("#sliderDots .slider-dot");
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  let currentSlide = 0;
+  const totalSlides = 6;
+  let autoSlideInterval;
+
+  function goToSlide(index) {
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+
+    track.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide = index;
+
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  // Button events
+  prevBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    prevSlide();
+    startAutoSlide();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    nextSlide();
+    startAutoSlide();
+  });
+
+  // Dot events
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      stopAutoSlide();
+      goToSlide(index);
+      startAutoSlide();
+    });
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoSlide();
+    },
+    { passive: true },
+  );
+
+  track.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoSlide();
+    },
+    { passive: true },
+  );
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  }
+
+  // Pause on hover
+  const container = document.querySelector(".services-slider-container");
+  if (container) {
+    container.addEventListener("mouseenter", stopAutoSlide);
+    container.addEventListener("mouseleave", startAutoSlide);
+  }
+
+  // Start auto-slide
+  startAutoSlide();
+}
+
 // ===== INITIALIZE EVERYTHING =====
 function initAll() {
   setTimeout(() => {
@@ -241,7 +352,8 @@ function initAll() {
     initCounters();
     initTyping();
     initSlider();
-    initMarquee();
+    // initMarquee();
+    initServicesSlider();
     initDarkMode();
   }, 100);
 }

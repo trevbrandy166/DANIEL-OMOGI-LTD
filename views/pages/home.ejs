@@ -43,21 +43,116 @@
   </div>
 </section>
 
-<!-- Image Marquee -->
-<section class="marquee-section">
+<!-- Services Image Slider -->
+<section class="services-slider-section">
   <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Trusted Across Industries</h2>
+    <h2 class="section-title" data-aos="fade-up">Our Services in Action</h2>
+    <p class="section-subtitle" data-aos="fade-up">
+      Professional solutions across industries
+    </p>
   </div>
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <div class="marquee-item">Food & Beverage</div>
-      <div class="marquee-item">Automotive</div>
-      <div class="marquee-item">Real Estate</div>
-      <div class="marquee-item">Construction</div>
-      <div class="marquee-item">Engineering</div>
-      <div class="marquee-item">Professional Services</div>
-      <div class="marquee-item">Electrical</div>
-      <div class="marquee-item">Manufacturing</div>
+
+  <div class="services-slider-container" data-aos="fade-up">
+    <button
+      class="slider-btn slider-prev"
+      id="sliderPrev"
+      aria-label="Previous slide"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="services-slider-wrapper">
+      <div class="services-slider-track" id="sliderTrack">
+        <div class="services-slide">
+          <img src="/images/audit.jpeg" alt="Audit & Assurance" />
+          <div class="slide-overlay">
+            <h3>Audit & Assurance</h3>
+            <p>Statutory audits, internal audits, and special investigations</p>
+            <a href="/services/audit-assurance" class="btn btn-sm"
+              >Learn More</a
+            >
+          </div>
+        </div>
+        <div class="services-slide">
+          <img src="/images/tax.jpg" alt="Tax Advisory" />
+          <div class="slide-overlay">
+            <h3>Tax Advisory</h3>
+            <p>KRA compliance, tax planning, and dispute resolution</p>
+            <a href="/services/tax-advisory" class="btn btn-sm">Learn More</a>
+          </div>
+        </div>
+        <div class="services-slide">
+          <img src="/images/hr.jpg" alt="HR Outsourcing" />
+          <div class="slide-overlay">
+            <h3>HR Outsourcing</h3>
+            <p>Payroll, recruitment, and performance management</p>
+            <a href="/services/hr-outsourcing" class="btn btn-sm">Learn More</a>
+          </div>
+        </div>
+        <div class="services-slide">
+          <img src="/images/risk.jpeg" alt="Risk Advisory" />
+          <div class="slide-overlay">
+            <h3>Risk Advisory</h3>
+            <p>Risk assessment and business continuity planning</p>
+            <a href="/services/risk-advisory" class="btn btn-sm">Learn More</a>
+          </div>
+        </div>
+        <div class="services-slide">
+          <img src="/images/iso.jpeg" alt="ISO Consultancy" />
+          <div class="slide-overlay">
+            <h3>ISO Consultancy</h3>
+            <p>ISO 9001, 14001, and 45001 certification support</p>
+            <a href="/services/iso-consultancy" class="btn btn-sm"
+              >Learn More</a
+            >
+          </div>
+        </div>
+        <div class="services-slide">
+          <img src="/images/financial.jpeg" alt="Financial Planning" />
+          <div class="slide-overlay">
+            <h3>Financial Planning</h3>
+            <p>Tailored plans for individuals and businesses</p>
+            <a href="/services/financial-planning" class="btn btn-sm"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      class="slider-btn slider-next"
+      id="sliderNext"
+      aria-label="Next slide"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="slider-dots" id="sliderDots">
+      <button
+        class="slider-dot active"
+        data-index="0"
+        aria-label="Slide 1"
+      ></button>
+      <button class="slider-dot" data-index="1" aria-label="Slide 2"></button>
+      <button class="slider-dot" data-index="2" aria-label="Slide 3"></button>
+      <button class="slider-dot" data-index="3" aria-label="Slide 4"></button>
+      <button class="slider-dot" data-index="4" aria-label="Slide 5"></button>
+      <button class="slider-dot" data-index="5" aria-label="Slide 6"></button>
     </div>
   </div>
 </section>
