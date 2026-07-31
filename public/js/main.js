@@ -212,26 +212,26 @@ function initSlider() {
 // }
 
 // ===== DARK MODE =====
-function initDarkMode() {
-  const darkModeToggle = document.getElementById("darkModeToggle");
-  const body = document.body;
+// function initDarkMode() {
+//   const darkModeToggle = document.getElementById("darkModeToggle");
+//   const body = document.body;
 
-  if (!darkModeToggle) return;
+//   if (!darkModeToggle) return;
 
-  if (localStorage.getItem("darkMode") === "enabled") {
-    body.classList.add("dark-mode");
-  }
+//   if (localStorage.getItem("darkMode") === "enabled") {
+//     body.classList.add("dark-mode");
+//   }
 
-  darkModeToggle.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
+//   darkModeToggle.addEventListener("click", () => {
+//     body.classList.toggle("dark-mode");
 
-    if (body.classList.contains("dark-mode")) {
-      localStorage.setItem("darkMode", "enabled");
-    } else {
-      localStorage.setItem("darkMode", "disabled");
-    }
-  });
-}
+//     if (body.classList.contains("dark-mode")) {
+//       localStorage.setItem("darkMode", "enabled");
+//     } else {
+//       localStorage.setItem("darkMode", "disabled");
+//     }
+//   });
+// }
 
 // ===== SERVICES IMAGE SLIDER =====
 function initServicesSlider() {
@@ -354,7 +354,6 @@ function initAll() {
     initSlider();
     // initMarquee();
     initServicesSlider();
-    initDarkMode();
   }, 100);
 }
 
