@@ -9,6 +9,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Security middleware
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+//         scriptSrc: ["'self'", "'unsafe-inline'"],
+//         scriptSrcAttr: ["'unsafe-inline'"],
+//         imgSrc: ["'self'", "data:", "https:"],
+//       },
+//     },
+//   }),
+// );
+
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -18,6 +32,7 @@ app.use(
         scriptSrc: ["'self'", "'unsafe-inline'"],
         scriptSrcAttr: ["'unsafe-inline'"],
         imgSrc: ["'self'", "data:", "https:"],
+        fontSrc: ["'self'", "https:", "data:"],
       },
     },
   }),
